@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>Database Configuration Properties</comment>
+    <entry key="dbDriver">com.mysql.jdbc.Driver</entry>
+    <entry key="dbUrl">jdbc:mysql://localhost:3306/myunitecdb</entry>
+    <entry key="dbUsersTable">users</entry>
+    <entry key="dbProgrammeEnrollmentTable">programmeenrollment</entry>
+    <entry key="dbProgrammeTable">programme</entry>
+    <entry key="dbModuleEnrollmentTable">moduleenrollment</entry>
+    <entry key="dbProgrammeModuleTable">programmemodule</entry>
+    <entry key="dbModuleTable">module</entry>
+    <entry key="dbUsernameAtt">username</entry>
+    <entry key="dbFirstNameAtt">firstname</entry>
+    <entry key="dbLastNameAtt">lastname</entry>
+    <entry key="dbPasswordAtt">password</entry>
+    <entry key="dbSaltAtt">salt</entry>
+    <entry key="dbProgrammeIdAtt">programmeid</entry>
+    <entry key="dbProgrammeNameAtt">programmename</entry>
+    <entry key="dbModuleIdAtt">moduleid</entry>
+    <entry key="dbModuleNameAtt">modulename</entry>
+    <entry key="dbStartDateAtt">startdate</entry>
+    <entry key="dbStatusAtt">status</entry>
+    <entry key="dbSemesterAtt">semester</entry>
+    <entry key="dbYearAtt">year</entry>
+    <entry key="dbGradeAtt">grade</entry>
+    <entry key="dbusername">root</entry>
+    <entry key="dbpassword">changeit</entry>
+</properties>
