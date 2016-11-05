@@ -10,6 +10,7 @@
     <entry key="dbModuleEnrollmentTable">moduleenrollment</entry>
     <entry key="dbProgrammeModuleTable">programmemodule</entry>
     <entry key="dbModuleTable">module</entry>
+    <entry key="dbGradesTable">grades</entry>
     <entry key="dbUsernameAtt">username</entry>
     <entry key="dbFirstNameAtt">firstname</entry>
     <entry key="dbLastNameAtt">lastname</entry>
@@ -23,6 +24,7 @@
     <entry key="dbStatusAtt">status</entry>
     <entry key="dbSemesterAtt">semester</entry>
     <entry key="dbYearAtt">year</entry>
+    <entry key="dbAssesmentAtt">assesment</entry>
     <entry key="dbGradeAtt">grade</entry>
     <entry key="dbusername">root</entry>
     <entry key="dbpassword">changeit</entry>

@@ -6,7 +6,6 @@
 package nz.ac.unitec.myunitec;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -50,7 +49,6 @@ public class Activemodules {
     private final String dbModuleNameAtt;
     private final String dbSemesterAtt;
     private final String dbYearAtt;
-    private final String dbGradeAtt;
     private final String dbUsernameAtt;
     private final String dbStatusAtt;
 
@@ -77,13 +75,13 @@ public class Activemodules {
         dbModuleNameAtt = properties.get("dbModuleNameAtt").toString();
         dbSemesterAtt = properties.get("dbSemesterAtt").toString();
         dbYearAtt = properties.get("dbYearAtt").toString();
-        dbGradeAtt = properties.get("dbGradeAtt").toString();
         dbUsernameAtt = properties.get("dbUsernameAtt").toString();
         dbStatusAtt = properties.get("dbStatusAtt").toString();
         connection = DriverManager.getConnection(dbUrl, dbUserName, dbPassword);
         getStudentActiveModules = connection.prepareStatement("SELECT * FROM "
                 + dbModuleEnrollmentTable + " WHERE " + dbUsernameAtt + " = ? "
-                + " AND " + dbStatusAtt + " = 'enrolled'");
+                + " AND " + dbStatusAtt + " = 'enrolled' OR " +
+                dbStatusAtt + " = 'pending'");
         getProgrammeModules = connection.prepareStatement("SELECT * FROM "
                 + dbProgrammeModuleTable + " WHERE " + dbProgrammeIdAtt + " = ? ");
         getModuleName = connection.prepareStatement("SELECT * FROM "
@@ -118,19 +116,19 @@ public class Activemodules {
             return jsonObject;
         }
 
-        if (isFound) {
-            try {
+        try {
+            JsonArrayBuilder modules = Json.createArrayBuilder();
+            if (isFound) {
                 Set<String> moduleIDs = new HashSet<>();
                 do {
                     moduleIDs.add(resultSet1.getString(dbModuleIdAtt));
                 } while (resultSet1.next());
-                JsonArrayBuilder modules = Json.createArrayBuilder();
+                
                 do {
                     Module module = new Module();
                     module.id = resultSet.getString(dbModuleIdAtt);
                     if (moduleIDs.contains(module.id)) {
                         module.year = resultSet.getString(dbYearAtt);
-                        module.grade = resultSet.getString(dbGradeAtt);
                         module.semester = resultSet.getString(dbSemesterAtt);
                         module.status = resultSet.getString(dbStatusAtt);
                         getModuleName.setString(1, module.id);
@@ -147,21 +145,18 @@ public class Activemodules {
                                         "moduleName", module.name).add(
                                         "semester", module.semester).add(
                                         "year", module.year).add(
-                                        "grade", module.grade).add(
                                         "status", module.status).build());
                     }
                 } while (resultSet.next());
-                jsonObject = Json.createObjectBuilder().add("result", "true").add(
-                        "modules", modules.build()).build();
-            } catch (SQLException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                jsonObject = Json.createObjectBuilder()
-                        .add("result", "false").build();
             }
-        } else {
+            jsonObject = Json.createObjectBuilder().add("result", "true").add(
+                    "modules", modules.build()).build();
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             jsonObject = Json.createObjectBuilder()
                     .add("result", "false").build();
         }
+
         return jsonObject;
     }
 
@@ -171,7 +166,6 @@ public class Activemodules {
         public String name;
         public String semester;
         public String year;
-        public String grade;
         public String status;
 
     }

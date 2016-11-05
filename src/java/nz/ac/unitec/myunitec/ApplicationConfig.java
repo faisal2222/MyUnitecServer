@@ -29,9 +29,12 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(nz.ac.unitec.myunitec.ActiveModuleGrades.class);
         resources.add(nz.ac.unitec.myunitec.Activeenrollment.class);
         resources.add(nz.ac.unitec.myunitec.Activemodules.class);
+        resources.add(nz.ac.unitec.myunitec.Enroll.class);
         resources.add(nz.ac.unitec.myunitec.Login.class);
+        resources.add(nz.ac.unitec.myunitec.ModuleEnrollment.class);
     }
     
 }
