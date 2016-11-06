@@ -140,6 +140,7 @@ public class Timetable {
                     getTimetableEntry.setInt(3, year);
                     ResultSet resultSet2 = getTimetableEntry.executeQuery();
                     if (resultSet2.first()) {
+                        do {
                         String weekday = resultSet2.getString(dbWeekdayAtt);
                         String room = resultSet2.getString(dbRoomAtt);
                         String timePeriod = resultSet2.getString(dbTimePeriodAtt);
@@ -151,6 +152,7 @@ public class Timetable {
                                         "weekday", weekday).add(
                                         "year", year).add(
                                         "timePeriod", timePeriod).build());
+                        } while (resultSet2.next());
                     }
 
                 } while (resultSet.next());
