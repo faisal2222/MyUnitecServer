@@ -10,6 +10,7 @@
     <entry key="dbModuleEnrollmentTable">moduleenrollment</entry>
     <entry key="dbProgrammeModuleTable">programmemodule</entry>
     <entry key="dbModuleTable">module</entry>
+    <entry key="dbTimetableEntryTable">timetableentry</entry>
     <entry key="dbGradesTable">grades</entry>
     <entry key="dbUsernameAtt">username</entry>
     <entry key="dbFirstNameAtt">firstname</entry>
@@ -26,6 +27,9 @@
     <entry key="dbYearAtt">year</entry>
     <entry key="dbAssesmentAtt">assesment</entry>
     <entry key="dbGradeAtt">grade</entry>
+    <entry key="dbWeekdayAtt">weekday</entry>
+    <entry key="dbRoomAtt">room</entry>
+    <entry key="dbTimePeriodAtt">timeperiod</entry>
     <entry key="dbusername">root</entry>
     <entry key="dbpassword">changeit</entry>
 </properties>

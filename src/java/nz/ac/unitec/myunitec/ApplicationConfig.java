@@ -35,6 +35,7 @@ public class ApplicationConfig extends Application {
         resources.add(nz.ac.unitec.myunitec.Enroll.class);
         resources.add(nz.ac.unitec.myunitec.Login.class);
         resources.add(nz.ac.unitec.myunitec.ModuleEnrollment.class);
+        resources.add(nz.ac.unitec.myunitec.Timetable.class);
     }
     
 }
